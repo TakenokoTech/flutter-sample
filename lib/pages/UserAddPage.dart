@@ -8,6 +8,11 @@ class UserAddPage extends StatefulWidget {
 class _TodoAddPageState extends State<UserAddPage> {
   String _text = '';
 
+  void _confirmed(text) {
+    // "pop"の引数から前の画面にデータを渡す
+    Navigator.of(context).pop(text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +37,7 @@ class _TodoAddPageState extends State<UserAddPage> {
             Container(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop(_text); // "pop"の引数から前の画面にデータを渡す
-                },
+                onPressed: () => _confirmed(_text),
                 child: Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
             ),
@@ -42,9 +45,7 @@ class _TodoAddPageState extends State<UserAddPage> {
             Container(
               width: double.infinity,
               child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(); // "pop"で前の画面に戻る
-                },
+                onPressed: () => _confirmed(null),
                 child: Text('キャンセル'),
               ),
             ),

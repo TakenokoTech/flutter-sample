@@ -5,7 +5,7 @@ class GetUserListUsecase {
 
   GetUserListUsecase(this.repository);
 
-  List<User> execute() {
+  Future<List<User>> execute() async {
     return [
       User(name: "User A"),
       User(name: "User B"),
