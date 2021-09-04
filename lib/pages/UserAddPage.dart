@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/repository/UserRepository.dart';
+import 'package:flutter_sample/usecase/AddUserUsecase.dart';
 
 class UserAddPage extends StatefulWidget {
   @override
@@ -9,6 +11,9 @@ class _TodoAddPageState extends State<UserAddPage> {
   String _text = '';
 
   void _confirmed(text) {
+    if(text != null) {
+      AddUserUsecase(UserRepository()).execute(text);
+    }
     // "pop"の引数から前の画面にデータを渡す
     Navigator.of(context).pop(text);
   }

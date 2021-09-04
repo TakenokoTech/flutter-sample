@@ -6,15 +6,6 @@ class GetUserListUsecase {
   GetUserListUsecase(this.repository);
 
   Future<List<User>> execute() async {
-    return [
-      User(name: "User A"),
-      User(name: "User B"),
-      User(name: "User C")
-    ];
+    return repository.getUserList();
   }
-}
-
-class User {
-  String name;
-  User({required this.name});
 }
