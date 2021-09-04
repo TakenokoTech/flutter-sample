@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class RippleCard extends StatefulWidget {
   final String text;
+  final String? detail;
   final Function() func;
 
-  RippleCard({required this.text, required this.func, Key? key})
+  RippleCard({required this.text, required this.func, this.detail, Key? key})
       : super(key: key);
 
   @override
@@ -17,6 +18,9 @@ class _RippleCardState extends State<RippleCard> {
     return Card(
         child: InkWell(
             onTap: widget.func,
-            child: ListTile(title: Text(widget.text))));
+            child: ListTile(
+                title: Text(widget.text),
+                subtitle: widget.detail?.isNotEmpty == true ? Text(widget.detail!) : null
+            )));
   }
 }
